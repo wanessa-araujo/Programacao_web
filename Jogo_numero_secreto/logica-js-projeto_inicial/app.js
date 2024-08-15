@@ -17,17 +17,24 @@ function verificarChute() {
         let palavraTentativa = tentativas >1 ? 'tentavivas' : 'tentativas';
         let mensagemTentativa = `Você descobriu o numero secreto com ${tentativas} ${palavraTentativa} tentativas!`;
         exibirTextoNaTela('p', mensagemTentativa);
+        document.getElementById('reiniciar').removeAttribute('disabled');
         } else{
             if (chute > numeroSecreto) {
                 exibirTextoNaTela('p', 'O numero secreto é menor');
             } else {
                 exibirTextoNaTela('p', 'O numero secreto é maior');
             } 
-            tentativas++;          
+            tentativas++;
+            limparCampo(); 
         }
 }
 
 function gerarNumeroAleatorio() {
     return parseInt(Math.random() * 10 + 1);
 }
+function limparCampo(){
+    chute = document.querySelector('input');
+    chute.value = '';
+}
+
 
